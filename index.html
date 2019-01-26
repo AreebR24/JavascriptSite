@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        html {
+            background: #9FD2FF;
+        }
+
+        body {
+            font-family: Ubuntu, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        button {
+            font-family: Ubuntu, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+</head>
+
+<body>
+    <h1><u>
+            <center>
+                JavaScript Test Site
+    </h1></u></center>
+
+    <h1>
+        FizzBuzz
+    </h1>
+    <button onclick="fizzBuzz()">FizzBuzz</button>
+
+    <h1>
+        Module 3
+    </h1>
+    <button onclick="Larger()">Larger Number</button>
+    <button onclick="Guess()">Guess the Number</button>
+    <button onclick="SortNumbers()">Sort Numbers</button>
+
+    <h1>
+        Module 4
+    </h1>
+    <button onclick="Largerof2()">Display the Larger Number</button>
+    <button onclick="StarPattern()">Star Pattern</button>
+
+    <h1>
+        Module 5
+    </h1>
+    <button onclick="strlength()">Length of a String</button>
+    <button onclick="alternateCase()">Alternate Casing</button>
+
+    <h1>
+        Module 6
+    </h1>
+    <button onclick="base64Encrypt()">Encryption</button>
+    <button onclick="base64Decrypt()">Decryption</button>
+
+
+    <script>
+        function fizzBuzz() {
+
+            var i;
+            i = prompt("Type in a number and check console log (F12) for results.");
+            if (i % 3 == 0 && i % 5 == 0) {
+                console.log("FizzBuzz")
+            }
+            else if (i % 3 == 0) {
+                console.log("Fizz")
+            }
+            else if (i % 5 == 0) {
+                console.log("Buzz")
+            }
+            else console.log("Input is neither Fizz nor Buzz nor FizzBuzz.")
+        }
+
+
+        /*
+        Module 3 p.1
+        */
+        function Larger() {
+            var x, y;
+            x = window.prompt("Write 1st number.")
+            y = window.prompt("Write 2nd number.")
+            if (x > y) {
+                alert(x + " is bigger than " + y);
+            }
+            else if (x < y) {
+                alert(y + " is bigger than " + x);
+            }
+            else if (x == y) {
+                alert(x + " is equal to " + y);
+            }
+            else {
+                alert("Input is invalid.");
+            }
+        }
+
+
+        /*
+        Module 3 p.2
+        */
+        function Guess() {
+
+            var rand = Math.floor((Math.random() * 1000));
+            var ans;
+
+            console.log(rand);
+            ans = prompt("Guess a number between 1 and 1000.");
+
+            do {
+                if (ans > rand) {
+                    ans = prompt("Too high, try again!");
+                }
+                else if (ans < rand) {
+                    ans = prompt("Too low, try again!");
+                }
+
+                else if (ans == "q") {
+                    break;
+
+                } else {
+                    ans = prompt("Invalid input. Try again.");
+                }
+            }
+            while (ans != rand);
+            if (ans == rand) {
+                alert("You got it!");
+            }
+        }
+
+
+        /*
+        Module 3 p.3
+        */
+        function SortNumbers() {
+            var x, y, z;
+            var x = prompt("Write your 1st number.");
+            var y = prompt("Write your 2nd number.");
+            var z = prompt("Write your 3rd number.");
+
+            if (x > y && x > z) {
+                if (y > z) {
+                    alert(x + " , " + y + " , " + z);
+                } else {
+                    alert(x + " , " + z + " , " + y);
+                }
+            } else if (y > x && y > z) {
+                if (x > z) {
+                    alert(y + " , " + x + " , " + z);
+                } else {
+                    alert(y + " , " + z + " , " + x);
+                }
+            } else if (z > x && z > y) {
+                if (x > y) {
+                    alert(z + " , " + x + " , " + y);
+                } else {
+                    alert(z + " , " + y + " , " + x);
+                }
+            }
+        }
+
+
+        /*
+        Module 4 p.1
+        */
+        function Largerof2() {
+            var x, y;
+            x = window.prompt("Write 1st number.")
+            y = window.prompt("Write 2nd number.")
+            if (y < x) {
+                alert(x);
+            }
+            else if (x < y) {
+                alert(y);
+            }
+            else {
+                window.prompt("Invalid input. Please try again.");
+            }
+        }
+
+
+        /*
+        Module 4 p.3
+        */
+        function StarPattern(height) {
+            var height = prompt('Input a number and check console log (F12) for a pattern.')
+            for (i = 1; i <= height; i++) {
+                var row = ' ';
+
+                for (var j = 1; j <= i; j++) {
+                    row += '*';
+                }
+
+                console.log(row);
+            }
+        }
+
+
+        /*
+        Module 5 p. 1
+        */
+        function strlength() {
+            var txt = window.prompt("Write a sentence and the length of your sentence will appear.");
+            var size = txt.length;
+            alert("The sentence is " + size + " characters long.");
+        }
+
+
+        /*
+        Module 5 pt. 2
+        */
+        function alternateCase() {
+            var word = prompt("Type a sentence here.");
+            var chars = word.toLowerCase().split("");
+            for (var i = 0; i < chars.length; i += 2) {
+                chars[i] = chars[i].toUpperCase();
+                console.log(word[i]);
+            }
+            alert(chars.join(""));
+        };
+
+
+        /* 
+        Module 6 p.1 (Encryption)
+        */
+
+        function base64Encrypt() {
+            // Define the encrypted string
+            var string = prompt("Give me a sentence to encrypt.");
+            // Encode the encrypted string
+            var encodedString = btoa(string);
+            alert(encodedString);
+        }
+
+        function base64Decrypt() {
+            // Define the decrypted string
+            var string1 = prompt("What should I decrypt for you?");
+
+            // Decode the decrypted string
+            var decodedString = atob(string1);
+            alert(decodedString);
+        }
+
+    </script>
+</body>
+
+</html>
